@@ -23,6 +23,7 @@ public class TesteJpaRelacionamento {
 		conta.setTitular("Maria Silveira");
 		
 		
+		mov.setConta(conta);
 		mov.setId(Calendar.getInstance().getTimeInMillis());
 		mov.setDtMov(Calendar.getInstance());
 		mov.setDescricao("Supermercado");
