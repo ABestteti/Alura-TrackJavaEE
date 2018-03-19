@@ -1,2 +1,4 @@
 /org.eclipse.buildship.core.prefs
 /org.jboss.ide.eclipse.as.core.prefs
+/org.eclipse.ltk.core.refactoring.prefs
+/org.eclipse.mylyn.tasks.ui.prefs
