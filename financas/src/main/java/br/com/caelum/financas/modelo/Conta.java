@@ -1,17 +1,22 @@
 package br.com.caelum.financas.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="CONTA")
 public class Conta {
 	
 	@Id
     //@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Column(name="TITULAR")
     private String titular;
-    private String banco; 
+	@Column(name="BANCO")
+    private String banco;
+	@Column(name="AGENCIA")
     private String agencia;
+	@Column(name="NUMERO")
     private String numero;
     
 	public Long getId() {

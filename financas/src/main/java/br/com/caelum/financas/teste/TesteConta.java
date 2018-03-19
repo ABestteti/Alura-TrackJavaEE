@@ -10,21 +10,34 @@ import br.com.caelum.financas.util.JPAUtil;
 public class TesteConta {
 
 	public static void main(String[] args) {
-		Calendar calendar = Calendar.getInstance();
-		
-        Conta conta = new Conta();
-        conta.setId(calendar.getTimeInMillis());
-        conta.setTitular("Leonardo");
-        conta.setBanco("Caixa Economica");
-        conta.setAgencia("123");
-        conta.setNumero("456");
-        
-        EntityManager em = new JPAUtil().getEntityManager();
-        
-        em.getTransaction().begin();
-        em.persist(conta);
-        em.getTransaction().commit();
-        
-        em.close();
+		Conta conta = new Conta();
+		conta.setId(Calendar.getInstance().getTimeInMillis());
+		conta.setTitular("Leonardo");
+		conta.setBanco("Caixa Economica");
+		conta.setAgencia("123");
+		conta.setNumero("456");
+
+		EntityManager em = new JPAUtil().getEntityManager();
+		em.getTransaction().begin();
+		{
+			em.persist(conta);
+		}
+		em.getTransaction().commit();
+		em.close();
+
+		conta.setId(Calendar.getInstance().getTimeInMillis());
+		conta.setTitular("Andre da Sil");
+		conta.setBanco("Banco do Brasil");
+		conta.setAgencia("321");
+		conta.setNumero("87654423");
+
+		em = new JPAUtil().getEntityManager();
+		em.getTransaction().begin();
+		{
+			em.persist(conta);
+		}
+		em.getTransaction().commit();
+		em.close();
+
 	}
 }
