@@ -17,7 +17,7 @@ public class TesteJPQL {
 		em.getTransaction().begin();
 		{
 			Conta cta = new Conta();
-			cta.setId(1521415344145L);
+			cta.setId(1521468591277L);
 			
 			String jpql = "select m from MOVIMENTACAO m where m.conta = :pCta"
 					+ " and m.tipoMovimentacao = :pTipo";

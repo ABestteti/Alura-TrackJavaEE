@@ -15,7 +15,7 @@ public class Cliente {
 	private String nome;
 	@Column(name="PROFISSAO", nullable=false, length=80)
 	private String profissao;
-	@Column(name="ENDERECO", nullable=false, length=256)
+	@Column(name="ENDERECO", nullable=false, length=255)
 	private String endereco;
 	
 	//Faz que o banco crie uma UK para o atributo, nesse caso, 

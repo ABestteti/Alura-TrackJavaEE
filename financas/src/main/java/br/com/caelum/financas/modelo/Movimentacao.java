@@ -16,20 +16,22 @@ import javax.persistence.TemporalType;
 
 import br.com.caelum.financas.enumeration.TipoMovimentacaoEnum;
 
-@Entity(name="MOVIMENTACAO")
+@Entity(name = "MOVIMENTACAO")
 public class Movimentacao {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private BigDecimal valor;
 	@Enumerated(EnumType.STRING)
-	@Column(length=15)
+	@Column(length = 15)
 	private TipoMovimentacaoEnum tipoMovimentacao;
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
+	@Column(length = 80)
 	private String descricao;
-	@ManyToMany // Monta uma tabela de ligacao entre as tabelas MOVIMENTACAO e CATEGORIA
+	@ManyToMany // Monta uma tabela de ligacao entre as tabelas MOVIMENTACAO e
+				// CATEGORIA => MOVIMENTACAO_CATEGORIA
 	private List<Categoria> categoria;
 
 	public List<Categoria> getCategoria() {

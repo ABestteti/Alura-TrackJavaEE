@@ -10,13 +10,13 @@ public class Conta {
 	@Id
     //@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="TITULAR")
+	@Column(name="TITULAR", length=100)
     private String titular;
-	@Column(name="BANCO")
+	@Column(name="BANCO", length=100)
     private String banco;
-	@Column(name="AGENCIA")
+	@Column(name="AGENCIA", length=200)
     private String agencia;
-	@Column(name="NUMERO")
+	@Column(name="NUMERO", length=10)
     private String numero;
     
 	public Long getId() {

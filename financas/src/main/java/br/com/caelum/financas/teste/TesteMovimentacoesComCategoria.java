@@ -43,12 +43,12 @@ public class TesteMovimentacoesComCategoria {
 		mov1.setCategorias(Arrays.asList(cat1, cat2));
 		mov1.setConta(cta1);
 		
-		mov1.setId(Calendar.getInstance().getTimeInMillis());
+		mov2.setId(Calendar.getInstance().getTimeInMillis());
 		mov2.setData(Calendar.getInstance());
 		mov2.setDescricao("Viagem ao Canada");
-		mov1.setTipoMovimentacao(TipoMovimentacaoEnum.SAIDA);
+		mov2.setTipoMovimentacao(TipoMovimentacaoEnum.SAIDA);
 		mov2.setValor(new BigDecimal("1174.98"));
-		mov2.setCategorias(Arrays.asList(cat3, cat4));
+		mov2.setCategorias(Arrays.asList(cat2, cat4));
 		mov2.setConta(cta1);
 
         EntityManager em = new JPAUtil().getEntityManager();
