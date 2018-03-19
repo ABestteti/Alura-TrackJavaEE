@@ -5,28 +5,54 @@
 	version="2.0">
 
 	<!-- unidade de persistencia com o nome financas -->
-	<persistence-unit name="financas">
+	<persistence-unit name="financasORCL">
 
 		<!-- Implementação do JPA, no nosso caso Hibernate -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.caelum.financas.modelo.Conta</class>
+		<class>br.com.caelum.financas.modelo.Cliente</class>
+		<class>br.com.caelum.financas.modelo.Categoria</class>
 		<class>br.com.caelum.financas.modelo.Movimentacao</class>
-		
+
 		<properties>
 			<!-- Propriedades JDBC -->
-	        <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
-	        <property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.0.50.12:1521:dbdes" />
-	        <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver" />            
-            <property name="hibernate.connection.username" value="anderson" />  
-            <property name="hibernate.connection.password" value="anderson" /> 
+			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+			<property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.0.50.12:1521:dbdes" />
+			<property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver" />
+			<property name="hibernate.connection.username" value="anderson" />
+			<property name="hibernate.connection.password" value="anderson" />
 
 			<!-- Configurações específicas do Hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
 
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="financasMySQL">
+
+		<!-- Implementação do JPA, no nosso caso Hibernate -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<!-- Aqui são listadas todas as entidades -->
+		<class>br.com.caelum.financas.modelo.Conta</class>
+		<class>br.com.caelum.financas.modelo.Cliente</class>
+		<class>br.com.caelum.financas.modelo.Categoria</class>
+		<class>br.com.caelum.financas.modelo.Movimentacao</class>
+
+		<properties>
+			<!-- Propriedades JDBC -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/financas" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="Kw7ta23y" />
+
+			<!-- Configurações específicas do Hibernate -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
