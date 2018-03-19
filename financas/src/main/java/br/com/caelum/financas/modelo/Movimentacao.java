@@ -30,9 +30,12 @@ public class Movimentacao {
 	private Calendar data;
 	@Column(length = 80)
 	private String descricao;
-	@ManyToMany // Monta uma tabela de ligacao entre as tabelas MOVIMENTACAO e
-				// CATEGORIA => MOVIMENTACAO_CATEGORIA
+	@ManyToMany
 	private List<Categoria> categoria;
+	// Monta uma tabela de ligacao entre as tabelas MOVIMENTACAO e
+	// CATEGORIA => MOVIMENTACAO_CATEGORIA.
+	@ManyToOne
+	private Conta conta;
 
 	public List<Categoria> getCategoria() {
 		return categoria;
@@ -41,9 +44,6 @@ public class Movimentacao {
 	public void setCategorias(List<Categoria> categoria) {
 		this.categoria = categoria;
 	}
-
-	@ManyToOne
-	private Conta conta;
 
 	public Long getId() {
 		return id;
@@ -92,5 +92,4 @@ public class Movimentacao {
 	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
-
 }

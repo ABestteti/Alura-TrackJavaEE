@@ -1,8 +1,12 @@
 package br.com.caelum.financas.modelo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import br.com.caelum.financas.modelo.Movimentacao;
 
 @Entity(name="CONTA")
 public class Conta {
@@ -18,6 +22,16 @@ public class Conta {
     private String agencia;
 	@Column(name="NUMERO", length=10)
     private String numero;
+	
+	// Estabelece a relacao com a entidade Movimentacao, criando
+	// uma relacao birecional.
+	// mappedBy informa ao JPA que o relacionamento ja esta mapeado
+	// na classe Movimentacao.java, atributo declarado como "conta".
+	// Com mappedBy="conta" conseguimos manter o @OneToMany apenas como 
+	// um espelho (bidirecional) evitando que ele crie duas vezes o relacionamento 
+	// no banco(chave estrangeira e tabela de relacionamento).
+	@OneToMany(mappedBy="conta")
+	private List<Movimentacao> movimentacoes;
     
 	public Long getId() {
 		return id;
@@ -48,5 +62,11 @@ public class Conta {
 	}
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	public final List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
+	}
+	public final void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
 	}
 }
