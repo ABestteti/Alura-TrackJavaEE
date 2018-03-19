@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.caelum.financas.enumeration.TipoMovimentacao;
+import br.com.caelum.financas.enumeration.TipoMovimentacaoEnum;
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.util.JPAUtil;
@@ -24,7 +24,7 @@ public class TesteJPQL {
 			Query query = em.createQuery(jpql);
 			
 			query.setParameter("pCta", cta);
-			query.setParameter("pTipo", TipoMovimentacao.SAIDA);
+			query.setParameter("pTipo", TipoMovimentacaoEnum.SAIDA);
 			
 			List<Movimentacao> resultados = query.getResultList();
 			

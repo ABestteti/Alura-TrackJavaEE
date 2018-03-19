@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.caelum.financas.enumeration.TipoMovimentacao;
+import br.com.caelum.financas.enumeration.TipoMovimentacaoEnum;
 
 @Entity(name="MOVIMENTACAO")
 public class Movimentacao {
@@ -25,7 +26,8 @@ public class Movimentacao {
 	private Integer id;
 	private BigDecimal valor;
 	@Enumerated(EnumType.STRING)
-	private TipoMovimentacao tipoMovimentacao;
+	@Column(length=15)
+	private TipoMovimentacaoEnum tipoMovimentacao;
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
 	private String descricao;
@@ -59,11 +61,11 @@ public class Movimentacao {
 		this.valor = valor;
 	}
 
-	public TipoMovimentacao getTipoMovimentacao() {
+	public TipoMovimentacaoEnum getTipoMovimentacao() {
 		return tipoMovimentacao;
 	}
 
-	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+	public void setTipoMovimentacao(TipoMovimentacaoEnum tipoMovimentacao) {
 		this.tipoMovimentacao = tipoMovimentacao;
 	}
 

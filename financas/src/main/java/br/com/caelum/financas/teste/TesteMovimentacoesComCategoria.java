@@ -6,7 +6,7 @@ import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 
-import br.com.caelum.financas.enumeration.TipoMovimentacao;
+import br.com.caelum.financas.enumeration.TipoMovimentacaoEnum;
 import br.com.caelum.financas.modelo.Categoria;
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
@@ -36,15 +36,15 @@ public class TesteMovimentacoesComCategoria {
 		Movimentacao mov2 = new Movimentacao();
 		
 		mov1.setData(Calendar.getInstance());
-		mov1.setDescricao("Viagem à Porto Alegre");
-		mov1.setTipoMovimentacao(TipoMovimentacao.SAIDA);
+		mov1.setDescricao("Viagem a Porto Alegre");
+		mov1.setTipoMovimentacao(TipoMovimentacaoEnum.SAIDA);
 		mov1.setValor(new BigDecimal("1250.23"));
 		mov1.setCategorias(Arrays.asList(cat1, cat2));
 		mov1.setConta(cta1);
 		
 		mov2.setData(Calendar.getInstance());
-		mov2.setDescricao("Viagem ao Canadá");
-		mov1.setTipoMovimentacao(TipoMovimentacao.SAIDA);
+		mov2.setDescricao("Viagem ao Canada");
+		mov1.setTipoMovimentacao(TipoMovimentacaoEnum.SAIDA);
 		mov2.setValor(new BigDecimal("1174.98"));
 		mov2.setCategorias(Arrays.asList(cat3, cat4));
 		mov2.setConta(cta1);

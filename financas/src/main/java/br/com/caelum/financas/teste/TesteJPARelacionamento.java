@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 
-import br.com.caelum.financas.enumeration.TipoMovimentacao;
+import br.com.caelum.financas.enumeration.TipoMovimentacaoEnum;
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.modelo.Movimentacao;
 import br.com.caelum.financas.util.JPAUtil;
@@ -26,7 +26,7 @@ public class TesteJPARelacionamento {
         Movimentacao movimentacao = new Movimentacao();
         movimentacao.setData(Calendar.getInstance());
         movimentacao.setDescricao("Churrascaria");
-        movimentacao.setTipoMovimentacao(TipoMovimentacao.SAIDA);
+        movimentacao.setTipoMovimentacao(TipoMovimentacaoEnum.SAIDA);
         movimentacao.setValor(new BigDecimal("200.0"));
 
         movimentacao.setConta(conta);
