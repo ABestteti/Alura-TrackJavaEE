@@ -35,6 +35,7 @@ public class TesteMovimentacoesComCategoria {
 		Movimentacao mov1 = new Movimentacao();
 		Movimentacao mov2 = new Movimentacao();
 		
+		mov1.setId(Calendar.getInstance().getTimeInMillis());
 		mov1.setData(Calendar.getInstance());
 		mov1.setDescricao("Viagem a Porto Alegre");
 		mov1.setTipoMovimentacao(TipoMovimentacaoEnum.SAIDA);
@@ -42,6 +43,7 @@ public class TesteMovimentacoesComCategoria {
 		mov1.setCategorias(Arrays.asList(cat1, cat2));
 		mov1.setConta(cta1);
 		
+		mov1.setId(Calendar.getInstance().getTimeInMillis());
 		mov2.setData(Calendar.getInstance());
 		mov2.setDescricao("Viagem ao Canada");
 		mov1.setTipoMovimentacao(TipoMovimentacaoEnum.SAIDA);

@@ -8,8 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -22,8 +20,8 @@ import br.com.caelum.financas.enumeration.TipoMovimentacaoEnum;
 public class Movimentacao {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private BigDecimal valor;
 	@Enumerated(EnumType.STRING)
 	@Column(length=15)
@@ -45,11 +43,11 @@ public class Movimentacao {
 	@ManyToOne
 	private Conta conta;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
