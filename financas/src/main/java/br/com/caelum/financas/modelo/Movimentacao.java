@@ -11,12 +11,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.caelum.financas.enumeration.TipoMovimentacaoEnum;
 
 @Entity(name = "MOVIMENTACAO")
+@NamedQuery(query="select m from MOVIMENTACAO m join m.categoria cat where cat = :pCategoria"
+, name="MovimentacaoPorCategoria")
 public class Movimentacao {
 
 	@Id

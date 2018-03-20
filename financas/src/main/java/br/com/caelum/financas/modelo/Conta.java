@@ -63,10 +63,10 @@ public class Conta {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public final List<Movimentacao> getMovimentacoes() {
+	public List<Movimentacao> getMovimentacoes() {
 		return movimentacoes;
 	}
-	public final void setMovimentacoes(List<Movimentacao> movimentacoes) {
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
 		this.movimentacoes = movimentacoes;
 	}
 }
