@@ -2,6 +2,7 @@ package br.com.caelum.livraria.dao;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 
 import br.com.caelum.livraria.modelo.Autor;
@@ -11,8 +12,20 @@ public class AutorDao {
 
 	private Banco banco = new Banco();
 
+	@PostConstruct
+	void aposCriacao() {
+	System.out.println("AustorDao foi criado!");	
+	}
+	
 	public void salva(Autor autor) {
+		System.out.println("Salvaldo autor " + autor.getNome());
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		banco.save(autor);
+		System.out.println("Salvou autor " + autor.getNome());
 	}
 	
 	public List<Autor> todosAutores() {
