@@ -19,6 +19,7 @@ public class LivroBean {
 	//private LivroDao livroDao = new LivroDao();
 	@Inject
 	private LivroDao livroDao;
+	
 	//private AutorDao autorDao = new AutorDao();
 	@Inject
 	private AutorDao autorDao;

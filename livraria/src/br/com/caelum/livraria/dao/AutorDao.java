@@ -4,28 +4,33 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
 public class AutorDao {
 
-	private Banco banco = new Banco();
+	//private Banco banco = new Banco();
+	@Inject
+	private Banco banco;
 
 	@PostConstruct
 	void aposCriacao() {
-	System.out.println("AustorDao foi criado!");	
+		System.out.println("[INFO] AutorDao foi criado.");
 	}
 	
 	public void salva(Autor autor) {
-		System.out.println("Salvaldo autor " + autor.getNome());
-		try {
-			Thread.sleep(20000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		System.out.println("[INFO] Salvando o Autor " + autor.getNome());
+		
+//		try {
+//			Thread.sleep(20000); //20s
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+		
 		banco.save(autor);
-		System.out.println("Salvou autor " + autor.getNome());
+		System.out.println("[INFO] Salvou o Autor " + autor.getNome());
 	}
 	
 	public List<Autor> todosAutores() {
