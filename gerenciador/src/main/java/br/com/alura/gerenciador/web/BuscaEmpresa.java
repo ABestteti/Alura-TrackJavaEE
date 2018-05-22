@@ -20,10 +20,35 @@ public class BuscaEmpresa extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -5640846148829616329L;
 
+	public BuscaEmpresa() {
+		System.out.println("Construindo servlet do tipo BuscaEmpresa: " + this);
+	}
+	
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		
+		System.out.println("Inicializando a servlet: " + this);
+	}
+	
+	@Override
+	public void destroy() {
+		super.destroy();
+		
+		System.out.println("Destruindo a servlet: " + this);
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter writer = resp.getWriter();
 		String filtro = req.getParameter("filtro");
+		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		writer.println("<html><body>");
 		writer.println("Resultado da busca: " + filtro + "</br>");
