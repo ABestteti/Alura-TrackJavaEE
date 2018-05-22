@@ -9,12 +9,14 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.Usuario;
 import br.com.alura.gerenciador.dao.UsuarioDAO;
 
 @WebServlet(urlPatterns="/login")
 public class Login extends HttpServlet{
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");
@@ -26,9 +28,9 @@ public class Login extends HttpServlet{
 		if (usuario == null) {
 			writer.println("<html><body>Usuário inválido</body></html>");
 		} else {
-			Cookie cookie = new Cookie("usuario.logado", usuario.getEmail()) ;
-			cookie.setMaxAge(600); // The cookie will expire within 10min.
-			resp.addCookie(cookie);
+			
+			HttpSession session = req.getSession();
+			session.setAttribute("usuario.logado", usuario);
 			
 			writer.println("<html><body>Usuário " + usuario.getEmail() + " autenticado.</body></html>");			
 		}
