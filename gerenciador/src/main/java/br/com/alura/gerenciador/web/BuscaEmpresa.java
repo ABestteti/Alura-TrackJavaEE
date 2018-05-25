@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,20 +51,10 @@ public class BuscaEmpresa extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		writer.println("<html><body>");
-		writer.println("Resultado da busca: " + filtro + "</br>");
-		
-		writer.println("<ul>");
 		Collection<Empresa> empresas = new EmpresaDAO().buscaPorSimilaridade(filtro);
+		req.setAttribute("empresas", empresas);
 		
-		if (!empresas.isEmpty()) {
-			for (Empresa empresa : empresas) {
-				writer.println("<li>" + empresa.getId() + ": " + empresa.getNome() + "</li>");
-			}
-		} else {
-			writer.println("<li>Não foram encontrados resultados para o filtro informado.</li>");
-		}
-		writer.println("</ul>");		
-		writer.print("</body></html>");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/paginas/buscaEmpresa.jsp");
+		dispatcher.forward(req, resp);
 	}
 }
