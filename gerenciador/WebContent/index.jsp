@@ -19,7 +19,8 @@
 			type="password" name="senha" /> <input type="submit" name="Enviar" />
 	</form>
 
-	<form action="logout" method="POST">
+	<form action="fazTudo" method="POST">
+	    <input type="hidden" name="tarefa" value="Logout" />
 		<input type="submit" value="Deslogar" />
 	</form>
 
