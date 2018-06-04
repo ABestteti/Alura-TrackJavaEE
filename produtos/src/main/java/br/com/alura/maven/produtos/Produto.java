@@ -8,5 +8,17 @@ public class Produto {
 		this.nome = nome;
 		this.preco = preco;
 	}
+	/**
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+	/**
+	 * @return the preco
+	 */
+	public double getPreco() {
+		return preco;
+	}
 	
 }
