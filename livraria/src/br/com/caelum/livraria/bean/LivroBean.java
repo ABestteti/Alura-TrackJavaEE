@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.dao.LivroDao;
