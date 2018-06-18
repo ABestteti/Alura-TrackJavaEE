@@ -13,6 +13,9 @@ import br.com.caelum.livraria.modelo.Livro;
 @Model
 public class LivroBean {
 	
+	@PersistenceContext
+	private EntityManager manager;
+	
 	private Livro livro = new Livro();
 	private Integer autorId;
 	
