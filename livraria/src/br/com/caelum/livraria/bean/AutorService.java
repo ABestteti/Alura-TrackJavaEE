@@ -22,7 +22,7 @@ public class AutorService {
 		dao.salva(autor);
 		
 		// Uma regra de negocio falhou e a transacao precisa ser desfeita (rollback)
-		throw new LivrariaException();
+		//throw new LivrariaException();
 	}
 
 	public List<Autor> todosAutores() {
