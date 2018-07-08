@@ -1,5 +1,6 @@
 package br.com.caelum.livraria.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ public class Autor {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@Column(nullable=false, length=500)
 	private String nome;
 
 	public String getNome() {
