@@ -28,7 +28,9 @@ public class Livro {
 	}
 
 	public void adicionaAutor(Autor autor) {
-		this.autores.add(autor);
+		if (!this.autores.contains(autor)) {
+			this.autores.add(autor);
+		}
 	}
 
 	public Livro() {
