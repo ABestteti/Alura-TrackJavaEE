@@ -1,5 +1,6 @@
 package br.com.caelum.livraria.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -15,7 +16,9 @@ import sun.security.validator.ValidatorException;
 
 @ManagedBean
 @ViewScoped
-public class LivroBean {
+public class LivroBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Livro livro = new Livro();
 	private Integer autorId;
@@ -70,7 +73,7 @@ public class LivroBean {
 		String valor = value.toString();
 
 		if (!valor.startsWith("1")) {
-			throw new ValidatorException(new FacesMessage("Deveria começar com 1"));
+			throw new ValidatorException(new FacesMessage("Deveria comecar com 1"));
 		}
 	}
 }
