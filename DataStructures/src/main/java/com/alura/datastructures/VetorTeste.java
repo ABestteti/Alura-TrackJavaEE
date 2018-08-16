@@ -18,7 +18,7 @@ public class VetorTeste {
 		
 		System.out.println(lista.contem(a1));
 				
-		lista.remove(1);
+		lista.remove(0);
 
 		System.out.println(lista.toString());
 		

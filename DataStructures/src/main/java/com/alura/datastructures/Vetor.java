@@ -6,8 +6,19 @@ public class Vetor {
 	private Aluno[] alunos = new Aluno[100];
 	
 	private int totalAlunos = 0;
+
+	private void garanteEspaco() {
+		if (totalAlunos == alunos.length) {
+			Aluno[] novoAlunoArray = new Aluno[alunos.length * 2];
+			for (int i = 0; i < alunos.length; i++) {
+				novoAlunoArray[i] = alunos[i];
+			}
+			this.alunos = novoAlunoArray;
+		}
+	}
 	
 	public void adiciona(Aluno aluno) {
+		garanteEspaco();
 		alunos[totalAlunos++] = aluno;
 	}
 	
@@ -16,7 +27,7 @@ public class Vetor {
 	}
 	
 	public void adiciona(int posicao, Aluno aluno) {
-		
+		garanteEspaco();
 		if (!posicaoValida(posicao)) {
 			throw new IllegalArgumentException("Posicao invalida " + posicao);
 		}
@@ -46,7 +57,7 @@ public class Vetor {
 			alunos[i] = alunos[i+1];
 		}
 		
-		totalAlunos--;
+		alunos[--totalAlunos] = null;
 	}
 	
 	public boolean contem(Aluno aluno) {
