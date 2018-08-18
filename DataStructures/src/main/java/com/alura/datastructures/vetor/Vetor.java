@@ -1,9 +1,9 @@
-package com.alura.datastructures;
+package com.alura.datastructures.vetor;
 
 import java.util.Arrays;
 
 public class Vetor {
-	private Aluno[] alunos = new Aluno[100];
+	private Aluno[] alunos = new Aluno[2];
 	
 	private int totalAlunos = 0;
 
@@ -32,7 +32,7 @@ public class Vetor {
 			throw new IllegalArgumentException("Posicao invalida " + posicao);
 		}
 		
-		for (int i = totalAlunos -1; i >- posicao; i-=1) {
+		for (int i = totalAlunos -1; i >= posicao; i-=1) {
 			alunos[i+1] = alunos[i];
 		}
 		
@@ -53,7 +53,7 @@ public class Vetor {
 	}
 	
 	public void remove(int posicao) {
-		for (int i = posicao; i < totalAlunos; i++) {
+		for (int i = posicao; i < (totalAlunos - 1); i++) {
 			alunos[i] = alunos[i+1];
 		}
 		

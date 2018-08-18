@@ -1,4 +1,4 @@
-package com.alura.datastructures;
+package com.alura.datastructures.vetor;
 
 public class Aluno {
 	private String nome;
