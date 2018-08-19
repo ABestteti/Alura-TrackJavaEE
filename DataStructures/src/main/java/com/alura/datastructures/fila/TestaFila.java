@@ -1,4 +1,4 @@
-package com.alura.datastructures.filha;
+package com.alura.datastructures.fila;
 
 public class TestaFila {
 	public static void main(String[] args) {

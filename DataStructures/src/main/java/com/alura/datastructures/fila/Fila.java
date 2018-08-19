@@ -1,4 +1,4 @@
-package com.alura.datastructures.filha;
+package com.alura.datastructures.fila;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,8 +18,8 @@ public class Fila {
 		return alunos.isEmpty();
 	}
 	
-	public boolean contem(Strin aluno) {
-		while (alunos.)
+	public boolean contem(String aluno) {
+		return alunos.contains(aluno);
 	}
 	
  	@Override
