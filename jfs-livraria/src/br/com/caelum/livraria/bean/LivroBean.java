@@ -62,11 +62,31 @@ public class LivroBean implements Serializable {
 			return;
 		}
 
-		new DAO<Livro>(Livro.class).adiciona(this.livro);
+		if (this.livro.getId() == null) {
+			new DAO<Livro>(Livro.class).adiciona(this.livro);
+		} else {
+			new DAO<Livro>(Livro.class).atualiza(this.livro);
+		}
 
 		// Create a new Livro instance in order to clean the page
 		// after Gravar action has been done.
 		this.livro = new Livro();
+	}
+	
+	public void remover(Livro livro) {
+	    System.out.println("Removendo livro " + livro.getTitulo());
+	    new DAO<Livro>(Livro.class).remove(livro);
+	    
+	    this.livros.remove(livro); //removendo da lista
+	}
+	
+	public void removerAutorDoLivro(Autor autor) {
+	    this.livro.removeAutor(autor);
+	}
+	
+	public void carregar(Livro livro) {
+	    System.out.println("Carregando livro " + livro.getTitulo());
+	    this.livro = livro;
 	}
 
 	public void comecaComDigitoUm(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
