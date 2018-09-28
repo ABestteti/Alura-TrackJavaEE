@@ -38,6 +38,10 @@ public class LivroBean implements Serializable {
 	public Livro getLivro() {
 		return livro;
 	}
+	
+	public void setLivro(Livro livro ) {
+		this.livro = livro;
+	}
 
 	public List<Autor> getAutores() {
 		return new DAO<Autor>(Autor.class).listaTodos();
