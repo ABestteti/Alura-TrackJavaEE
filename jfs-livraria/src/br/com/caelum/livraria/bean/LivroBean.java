@@ -81,7 +81,7 @@ public class LivroBean implements Serializable {
 	}
 	
 	public void removerAutorDoLivro(Autor autor) {
-	    this.livro.removeAutor(autor);
+		this.livro.removeAutor(autor);
 	}
 	
 	public void carregar(Livro livro) {

@@ -87,7 +87,7 @@ public class Livro implements Serializable {
 		this.dataLancamento = dataLancamento;
 	}
 
-	public void remover(Livro livro) {
+	public void remove(Livro livro) {
 		
 		
 	}

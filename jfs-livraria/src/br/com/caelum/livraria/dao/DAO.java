@@ -32,22 +32,36 @@ public class DAO<T> {
 	}
 
 	public void remove(T t) {
+		// consegue a entity manager
 		EntityManager em = new JPAUtil().getEntityManager();
+		
+		// abre transacao
 		em.getTransaction().begin();
 
+		// Atualiza o objeto
 		em.remove(em.merge(t));
 
+		// commita a transacao
 		em.getTransaction().commit();
+		
+		// fecha a entity manager
 		em.close();
 	}
 
 	public void atualiza(T t) {
+		// consegue a entity manager
 		EntityManager em = new JPAUtil().getEntityManager();
+		
+		// abre transacao
 		em.getTransaction().begin();
 
+		// Atualiza o objeto
 		em.merge(t);
 
+		// commita a transacao
 		em.getTransaction().commit();
+		
+		// fecha a entity manager
 		em.close();
 	}
 

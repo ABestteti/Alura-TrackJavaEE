@@ -18,8 +18,22 @@
 					<h:commandButton value="Gravar" action="#{autorBean.gravar}" />
 				</h:panelGrid>
 			</fieldset>
+			<fieldset>
+				<legend>Autores cadastrados</legend>
+				<h:dataTable value="#{autorBean.getAutores()}" var="autor"
+					id="tabelaAutores">
+					<h:column>
+						<h:outputText value="#{autor.nome}" />
+					</h:column>
+					<h:column>
+						<h:commandLink value="X" action="#{autorBean.remover(autor)}" />
+					</h:column>
+				</h:dataTable>
+			</fieldset>
 		</h:form>
 	</ui:define>
+
+
 	<ui:define name="textoRodape">
 	 autor.xhtml - 1.0.18.09.2018
 	</ui:define>
