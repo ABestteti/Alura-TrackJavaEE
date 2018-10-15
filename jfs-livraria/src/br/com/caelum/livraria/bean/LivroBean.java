@@ -21,7 +21,16 @@ public class LivroBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Livro livro = new Livro();
+	private Integer livroId;
 	private Integer autorId;
+
+	public Integer getLivroId() {
+		return livroId;
+	}
+
+	public void setLivroId(Integer livroId) {
+		this.livroId = livroId;
+	}
 
 	public void setAutorId(Integer autorId) {
 		this.autorId = autorId;
@@ -93,6 +102,12 @@ public class LivroBean implements Serializable {
 	    this.livro = livro;
 	}
 
+	public void carregarLivroPelaId() {
+		if (this.livroId != null) {
+			this.livro = new DAO<Livro>(Livro.class).buscaPorId(livroId);
+		}
+	}
+	
 	public void comecaComDigitoUm(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
 		String valor = value.toString();
 
