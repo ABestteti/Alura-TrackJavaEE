@@ -19,6 +19,8 @@
 	    copyright 2012
 		<ui:insert name="textoRodape">
 		</ui:insert>
+		<!-- Queremos pegar o POJO usuario no mapa da sessão. E podemos acessar a propriedade email dentro dele -->
+		<h:outputText value=" - usuario logado: #{sessionScope['usuarioLogado'].email}" />
 	</div>
 </h:body>
 </html>
