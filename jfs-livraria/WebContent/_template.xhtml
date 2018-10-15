@@ -1,12 +1,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head />
 <h:body>
 	<div id="cabecalho">
 		<h:graphicImage library="img" name="logo.png" />
+
+		<h:form rendered="#{usuarioLogado != null}">
+			<h:commandLink value="Logout" action="#{loginBean.deslogar}" />
+		</h:form>
+
 		<h1>
 			<ui:insert name="titulo"></ui:insert>
 		</h1>
@@ -16,11 +21,12 @@
 		</ui:insert>
 	</div>
 	<div id="rodape">
-	    copyright 2012
+		copyright 2012
 		<ui:insert name="textoRodape">
 		</ui:insert>
 		<!-- Queremos pegar o POJO usuario no mapa da sessão. E podemos acessar a propriedade email dentro dele -->
-		<h:outputText value=" - usuario logado: #{sessionScope['usuarioLogado'].email}" />
+		<h:outputText rendered="#{usuarioLogado != null}"
+			value=" - usuario logado: #{sessionScope['usuarioLogado'].email}" />
 	</div>
 </h:body>
 </html>

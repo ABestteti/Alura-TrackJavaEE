@@ -13,6 +13,9 @@
         </ui:define>
 
         <ui:define name="conteudo">
+        
+            <h:messages globalOnly="true" />
+            
             <h:form id="login">
                 <fieldset>
                     <legend>Login</legend>
@@ -27,10 +30,14 @@
                         <h:message for="email" id="messageEmail" />
 
                         <h:outputLabel value="Senha:" for="senha" />
+                        
+                        <!-- <h:inputText id="senha" value="#{loginBean.usuario.senha}"
+                            required="true">
+                            <f:passThroughAttribute name="type" value="password" />
+                            </h:inputText>  -->
+
                         <h:inputSecret id="senha" value="#{loginBean.usuario.senha}"
                             required="true" />
-                        <!-- <f:passThroughAttribute name="type" value="password" />
-                        </h:inputText>  -->
 
                         <h:message for="senha" id="messageSenha" />
 
