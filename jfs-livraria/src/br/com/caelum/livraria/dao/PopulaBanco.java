@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.modelo.Livro;
+import br.com.caelum.livraria.modelo.Usuario;
 
 public class PopulaBanco {
 
@@ -60,6 +61,20 @@ public class PopulaBanco {
 		em.persist(capitaes);
 		em.persist(flor);
 
+		Usuario usuario1 = new Usuario();
+		Usuario usuario2 = new Usuario();
+		
+		usuario1.setId(1);
+		usuario1.setEmail("teste1@teste.com");
+		usuario1.setSenha("123");
+
+		usuario2.setId(2);
+		usuario2.setEmail("teste2@teste.com");
+		usuario2.setSenha("123");
+
+		em.persist(usuario1);
+		em.persist(usuario2);
+		
 		em.getTransaction().commit();
 		em.close();
 
