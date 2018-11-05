@@ -45,8 +45,10 @@ public class AutorBean {
 	}
 	
 	public void remover(Autor autor) {
-		System.out.println("Removendo autor " + autor.getNome());
-		new DAO<Autor>(Autor.class).remove(autor);
+		if (autor != null) {
+			System.out.println("Removendo autor " + autor.getNome());
+			new DAO<Autor>(Autor.class).remove(autor);
+		}
 	}
 	
 	public List<Autor> getAutores() {
