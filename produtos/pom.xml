@@ -30,10 +30,6 @@
 			<version>1.4.10</version>
 		</dependency>
 	</dependencies>
-	<organization>
-		<name>Acao Sistemas de Informatica Ltda</name>
-		<url>www.acaosistemas.com</url>
-	</organization>
 
 	<build>
 		<plugins>
