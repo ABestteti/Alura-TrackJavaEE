@@ -2,6 +2,7 @@ package br.com.caelum.livraria.bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Locale;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -41,6 +42,16 @@ public class LivroBean implements Serializable {
 	public List<Livro> getLivros() {
 		DAO<Livro> dao = new DAO<Livro>(Livro.class);
 		
+		// Performance: como o ciclo de vida desse DAO é do tipo
+		// @ViewScoped, é uma boa prática criar uma espécie de cache da
+		// lista de livros, pois o primefaces chama esse método toda vez que 
+		// acionamos o botão de ordenação de uma coluna do componente dataTable.
+		// Sendo assim, será disparada a query contra o banco, criando um overhead
+		// de consutlas no banco de dados. Podemos melhorar isso, criando um cache
+		// com o teste a seguir. Ou seja, caso o objeto livros já esteja instanciado,
+		// não é necessário executar novamente a consulta no banco de dados. Consequentemente,
+		// o primefaces terá condições de executar a ardenação dos registros apresentados
+		// no componente dataTable.
 		if (this.livros == null) {
 			this.livros = dao.listaTodos();
 		}
@@ -74,10 +85,12 @@ public class LivroBean implements Serializable {
 			return;
 		}
 
+		DAO<Livro> dao = new DAO<Livro>(Livro.class);
 		if(this.livro.getId() == null) {
-			new DAO<Livro>(Livro.class).adiciona(this.livro);
+			dao.adiciona(this.livro);
+			this.livros = dao.listaTodos();
 		} else {
-			new DAO<Livro>(Livro.class).atualiza(this.livro);
+			dao.atualiza(this.livro);
 		}
 
 		this.livro = new Livro();
@@ -111,5 +124,36 @@ public class LivroBean implements Serializable {
 					"ISBN deveria comeÃ§ar com 1"));
 		}
 
+	}
+	
+	public boolean precoEhMenor(Object valorColuna, Object filtroDigitado, Locale locale) {
+        //tirando espaços do filtro
+        String textoDigitado = (filtroDigitado == null) ? null : filtroDigitado.toString().trim();
+
+        System.out.println("Filtrando pelo " + textoDigitado + ", Valor do elemento: " + valorColuna);
+
+        // o filtro é nulo ou vazio?
+        if (textoDigitado == null || textoDigitado.equals("")) {
+            return true;
+        }
+
+        // elemento da tabela é nulo?
+        if (valorColuna == null) {
+            return false;
+        }
+
+        try {
+            // fazendo o parsing do filtro para converter para Double
+            Double precoDigitado = Double.valueOf(textoDigitado);
+            Double precoColuna = (Double) valorColuna;
+
+            // comparando os valores, compareTo devolve um valor negativo se o value é menor do que o filtro
+            return precoColuna.compareTo(precoDigitado) < 0;
+
+        } catch (NumberFormatException e) {
+
+            // usuario nao digitou um numero
+            return false;
+        }		
 	}
 }
