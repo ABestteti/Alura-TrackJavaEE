@@ -1,6 +1,7 @@
 package br.com.caelum.livraria.bean;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,6 +15,7 @@ import javax.faces.validator.ValidatorException;
 import br.com.caelum.livraria.dao.DAO;
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.modelo.Livro;
+import br.com.caelum.livraria.modelo.LivroDataModel;
 
 @ManagedBean
 @ViewScoped
@@ -26,6 +28,22 @@ public class LivroBean implements Serializable {
 	private Integer autorId;
 
 	private List<Livro> livros;
+
+	private LivroDataModel livroDataModel = new LivroDataModel();
+	
+	private List<String> generos = Arrays.asList("Romance", "Drama", "Ação");
+
+	public List<String> getGeneros() {
+	    return generos;
+	}
+	
+	public LivroDataModel getLivroDataModel() {
+		return livroDataModel;
+	}
+
+	public void setLivroDataModel(LivroDataModel livroDataModel) {
+		this.livroDataModel = livroDataModel;
+	}
 
 	public void setAutorId(Integer autorId) {
 		this.autorId = autorId;
