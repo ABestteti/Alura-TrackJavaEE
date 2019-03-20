@@ -1,6 +1,7 @@
 package br.com.caelum.livraria.dao;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,7 +18,8 @@ public class JPAUtil {
 		return emf.createEntityManager();
 	}
 
-	public void close(EntityManager em) {
+	public void close(@Disposes EntityManager em) {
 		em.close();
 	}
+
 }

@@ -1,22 +1,26 @@
 package br.com.caelum.livraria.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
-public class DAO<T> {
+public class DAO<T> implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private final Class<T> classe;
 	private EntityManager em;
 
-	public DAO(EntityManager manager,Class<T> classe) {
-		this.em = manager;
+	public DAO(EntityManager em, Class<T> classe) {
 		this.classe = classe;
+		this.em = em;
 	}
 
 	public void adiciona(T t) {
-		// abre transacao
+
+		//abre transacao
 		em.getTransaction().begin();
 
 		// persiste o objeto
@@ -24,25 +28,31 @@ public class DAO<T> {
 
 		// commita a transacao
 		em.getTransaction().commit();
+
 	}
 
 	public void remove(T t) {
-		em.getTransaction().begin();
+
+		//em.getTransaction().begin();
 
 		em.remove(em.merge(t));
 
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
+
 	}
 
 	public void atualiza(T t) {
-		em.getTransaction().begin();
+
+		//em.getTransaction().begin();
 
 		em.merge(t);
 
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
+
 	}
 
 	public List<T> listaTodos() {
+
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
 
@@ -52,18 +62,22 @@ public class DAO<T> {
 	}
 
 	public T buscaPorId(Integer id) {
+
 		T instancia = em.find(classe, id);
+
 		return instancia;
 	}
 
 	public int contaTodos() {
+
 		long result = (Long) em.createQuery("select count(n) from livro n")
 				.getSingleResult();
+
 		return (int) result;
 	}
 
 	public List<T> listaTodosPaginada(int firstResult, int maxResults) {
-		EntityManager em = new JPAUtil().getEntityManager();
+
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
 
