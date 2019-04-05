@@ -21,13 +21,13 @@ public class DAO<T> implements Serializable {
 	public void adiciona(T t) {
 
 		//abre transacao
-		em.getTransaction().begin();
+		//em.getTransaction().begin();
 
 		// persiste o objeto
 		em.persist(t);
 
 		// commita a transacao
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
 
 	}
 

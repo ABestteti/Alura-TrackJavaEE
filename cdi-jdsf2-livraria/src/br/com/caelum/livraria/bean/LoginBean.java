@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.caelum.livraria.dao.UsuarioDao;
@@ -16,6 +17,9 @@ public class LoginBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	@Inject
+	UsuarioDao dao;
+	
 	private Usuario usuario = new Usuario();
 
 	public Usuario getUsuario() {

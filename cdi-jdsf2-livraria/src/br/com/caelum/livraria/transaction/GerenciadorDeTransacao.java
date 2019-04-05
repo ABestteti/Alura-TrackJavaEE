@@ -19,11 +19,15 @@ public class GerenciadorDeTransacao implements Serializable{
 	
 	@AroundInvoke
 	public Object executaTX(InvocationContext contexto) throws Exception {
+		
+		System.out.println("abrindo tx");
 		manager.getTransaction().begin();
 		
-		// Chamar os daos que precisam de um contexto
+		// Chamar os daos através do contexto de invocacao da anotação @Transacional
+		System.out.println("Executando metodo do DAO: " +contexto.getMethod().getName());
 		Object resultado = contexto.proceed();
 		
+		System.out.println("fechando tx");
 		manager.getTransaction().commit();
 		
 		return resultado;

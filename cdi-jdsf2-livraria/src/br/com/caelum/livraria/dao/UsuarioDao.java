@@ -1,12 +1,20 @@
 package br.com.caelum.livraria.dao;
 
+import java.io.Serializable;
+
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import br.com.caelum.livraria.modelo.Usuario;
 
-public class UsuarioDao {
+public class UsuarioDao implements Serializable {
+
+	@Inject
+	EntityManager em;
+	
+	private static final long serialVersionUID = -5939874474635707787L;
 
 	public boolean existe(Usuario usuario) {
 		
@@ -23,7 +31,7 @@ public class UsuarioDao {
 			return false;
 		}
 		
-		em.close();
+		//em.close();
 		
 		return true;
 	}

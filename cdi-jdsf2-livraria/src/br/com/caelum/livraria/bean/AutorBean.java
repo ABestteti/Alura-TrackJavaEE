@@ -10,6 +10,7 @@ import javax.inject.Named;
 import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.transaction.Transacional;
+import br.com.caelum.livraria.util.Log;
 
 @Named
 @ViewScoped
@@ -57,6 +58,7 @@ public class AutorBean implements Serializable {
 		this.dao.remove(autor);
 	}
 
+	@Log
 	public List<Autor> getAutores() {
 		return this.dao.listaTodos();
 	}
