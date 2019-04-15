@@ -35,6 +35,9 @@ public class LivroBean implements Serializable {
 
 	@Inject
 	private AutorDao autorDao;
+	
+	@Inject
+	FacesContext context;
 
 	public void setAutorId(Integer autorId) {
 		this.autorId = autorId;
@@ -80,7 +83,8 @@ public class LivroBean implements Serializable {
 		System.out.println("Gravando livro " + this.livro.getTitulo());
 
 		if (livro.getAutores().isEmpty()) {
-			FacesContext.getCurrentInstance().addMessage("autor",
+			// Adotado CDI
+			context.addMessage("autor",
 					new FacesMessage("Livro deve ter pelo menos um Autor."));
 			return;
 		}

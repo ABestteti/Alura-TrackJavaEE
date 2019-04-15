@@ -12,14 +12,15 @@ import br.com.caelum.livraria.modelo.Usuario;
 public class UsuarioDao implements Serializable {
 
 	@Inject
-	EntityManager em;
+	EntityManager manager;
 	
 	private static final long serialVersionUID = -5939874474635707787L;
 
 	public boolean existe(Usuario usuario) {
 		
-		EntityManager em = new JPAUtil().getEntityManager();
-		TypedQuery<Usuario> query = em.createQuery(
+        // Comentado em funcao da adocao do CDI
+		//EntityManager em = new JPAUtil().getEntityManager();
+		TypedQuery<Usuario> query = manager.createQuery(
 				  " select u from Usuario u "
 				+ " where u.email = :pEmail and u.senha = :pSenha", Usuario.class);
 		
@@ -31,6 +32,7 @@ public class UsuarioDao implements Serializable {
 			return false;
 		}
 		
+		// Comentado em funcao da adocao do CDI
 		//em.close();
 		
 		return true;
