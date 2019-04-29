@@ -28,7 +28,12 @@ public class Livro implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataLancamento = Calendar.getInstance();
 
-	@ManyToMany(fetch=FetchType.EAGER)
+	// A opcao "fetch=FetchType.LAZY" e padrao do Hibernate.
+	// Deixei explicito para facilitar entendimento do codigo.
+	// Com FetchType.LAZY devemos inicializar o livro, da classe LivroBean, dentro
+	// do metodo carregar (ver o codigo), caso contrario sera retornada a excecao
+	// "LazyInitializationException" quando usuario tentar alterar um livro.
+	@ManyToMany(fetch=FetchType.LAZY)
 	private List<Autor> autores = new ArrayList<Autor>();
 
 	public List<Autor> getAutores() {

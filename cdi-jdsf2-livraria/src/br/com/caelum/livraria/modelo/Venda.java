@@ -16,6 +16,7 @@ public class Venda {
 	private Livro livro;
 	private Integer quantidade;
 
+	// Construtor padrao para atender a exigencia do CDI.
 	public Venda() {}
 	
 	public Venda(Livro livro, Integer quantidade) {
