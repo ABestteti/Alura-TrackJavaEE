@@ -3,29 +3,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:composite="http://java.sun.com/jsf/composite"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
+<style type="text/css">
+    .ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+        text-align: left;
+    }
+</style>
 <title>Auron</title>
 </head>
 <body>
 	<h:form>
-		<h:panelGrid columns="2">
+		<p:panelGrid columns="2" layout="grid">
 
-			<h:outputText value="Nome: " />
-			<h:inputText value="#{participanteBean.participante.nome}" />
+			<p:outputLabel value="Nome: " />
+			<p:inputText value="#{participanteBean.participante.nome}" />
 
-			<h:outputText value="email: " />
-			<h:inputText value="#{participanteBean.participante.email}" />
+			<p:outputLabel value="email: " />
+			<p:inputText value="#{participanteBean.participante.email}" />
 
-			<h:outputText value="Senha: " />
-			<h:inputSecret value="#{participanteBean.participante.senha}" />
+			<p:outputLabel value="Senha: " />
+			<p:password value="#{participanteBean.participante.senha}" />
 
-			<h:commandButton action="#{participanteBean.cadastrar}"
-				value="Cadastrar" />
+			<p:commandButton action="#{participanteBean.cadastrar}"
+				value="Cadastrar" style="margin-right:20px;" icon="pi pi-save"/>
 
-		</h:panelGrid>
+		</p:panelGrid>
 	</h:form>
-
 </body>
 </html>

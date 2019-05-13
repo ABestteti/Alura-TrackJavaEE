@@ -17,7 +17,7 @@ public class ParticipanteBean {
 	private Participante participante = new Participante();
 	
 	public void cadastrar() {
-		System.out.println(participante.getNome());
+		System.out.println("Gravando participante: " + participante.getNome());
 		participanteDao.inserir(participante);
 	}
 
