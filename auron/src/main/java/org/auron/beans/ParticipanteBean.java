@@ -1,6 +1,8 @@
 package org.auron.beans;
 
-import javax.faces.bean.RequestScoped;
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -24,9 +26,8 @@ public class ParticipanteBean {
 	public Participante getParticipante() {
 		return participante;
 	}
-
-	public void setParticipante(Participante participante) {
-		this.participante = participante;
-	}
 	
+	public List<Participante> getParticipantes() {
+		return participanteDao.getParticipantes();
+	}
 }

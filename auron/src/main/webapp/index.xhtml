@@ -1,36 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:composite="http://java.sun.com/jsf/composite"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<style type="text/css">
-    .ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
-        text-align: left;
-    }
-</style>
-<title>Auron</title>
-</head>
-<body>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
 	<h:form>
-		<p:panelGrid columns="2" layout="grid">
-
+		<p:panelGrid columns="2">
 			<p:outputLabel value="Nome: " />
 			<p:inputText value="#{participanteBean.participante.nome}" />
 
-			<p:outputLabel value="email: " />
+			<p:outputLabel value="Email: " />
 			<p:inputText value="#{participanteBean.participante.email}" />
 
 			<p:outputLabel value="Senha: " />
 			<p:password value="#{participanteBean.participante.senha}" />
 
-			<p:commandButton action="#{participanteBean.cadastrar}"
-				value="Cadastrar" style="margin-right:20px;" icon="pi pi-save"/>
-
+			<p:commandButton action="#{participanteBean.cadastrar}" ajax="false"
+				value="Cadastrar" />
 		</p:panelGrid>
 	</h:form>
-</body>
+	<h:dataTable value="#{participanteBean.participantes}"
+		var="participantes">
+		<h:column>
+			<h:outputText value="#{participante.nome}" />
+		</h:column>
+	</h:dataTable>
+</h:body>
 </html>
