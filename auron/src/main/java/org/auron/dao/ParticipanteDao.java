@@ -19,6 +19,6 @@ public class ParticipanteDao {
 	}
 
 	public List<Participante> getParticipantes() {
-		return em.createQuery("from Participante", Participante.class).getResultList();
+		return em.createQuery("select p from Participante p", Participante.class).getResultList();
 	}
 }
