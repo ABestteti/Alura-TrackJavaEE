@@ -20,7 +20,7 @@ public class SorteioBean {
 		return sorteio;
 	}
 	
-	public void sortear() {
+	public void sortear() throws SorteioException {
 		List<Participante> participantes = new ArrayList<>();
 		Sorteador sorteador = new Sorteador(sorteio, participantes);
 		
