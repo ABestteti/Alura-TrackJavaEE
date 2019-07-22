@@ -30,5 +30,16 @@ public class Par {
 	public Participante getAmigoOculto() {
 		return amigoOculto;
 	}
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public Participante getAmigo() {
+		return amigo;
+	}
+
+	public Sorteio getSorteio() {
+		return sorteio;
+	}
 }

@@ -1,4 +1,4 @@
-package org.auron.beans;
+package br.com.caelum.auron.beans;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.auron.dao.ParticipanteDao;
-import org.auron.modelo.Participante;
+import br.com.caelum.auron.dao.ParticipanteDao;
+import br.com.caelum.auron.modelo.Participante;
 
 @Named
 @RequestScoped

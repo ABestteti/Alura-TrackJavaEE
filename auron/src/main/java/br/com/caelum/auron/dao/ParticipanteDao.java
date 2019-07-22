@@ -1,4 +1,4 @@
-package org.auron.dao;
+package br.com.caelum.auron.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.auron.modelo.Participante;
+import br.com.caelum.auron.modelo.Participante;
 
 @Stateless
 public class ParticipanteDao {

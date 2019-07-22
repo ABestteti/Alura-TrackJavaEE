@@ -1,4 +1,4 @@
-package org.auron.modelo;
+package br.com.caelum.auron.modelo;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -49,6 +49,10 @@ public class Sorteio {
 
 	public void adicionaPar(Par par) {
 		this.pares.add(par);
+	}
+
+	public int getQuantidadeDePares() {
+		return pares.size();
 	}
 	
 }

@@ -1,4 +1,4 @@
-package org.auron.modelo;
+package br.com.caelum.auron.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
