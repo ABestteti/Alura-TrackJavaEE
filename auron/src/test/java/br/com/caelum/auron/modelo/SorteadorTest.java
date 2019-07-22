@@ -74,7 +74,7 @@ public class SorteadorTest {
 	
 	@Test(expected=SorteioException.class)
 	public void naoDeveAceitarUmaListaComMenosDeDoisParticipantes() throws SorteioException {
-		Sorteador sorteador = new Sorteador(sorteio, new ArrayList<>());
+		Sorteador sorteador = new Sorteador(sorteio, new ArrayList<Participante>());
 		sorteador.sortear();	
 	}
 
