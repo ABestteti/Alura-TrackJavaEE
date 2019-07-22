@@ -1,12 +1,13 @@
 package br.com.caelum.auron.modelo;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Sorteador {
 	
     private List<Participante> participantes;
-    private int totalDeParticipantes;
 	private Sorteio sorteio;
+	private int totalDeParticipantes;
 
     public Sorteador(Sorteio sorteio, List<Participante> participantes) throws SorteioException {
     	
@@ -16,27 +17,39 @@ public class Sorteador {
     	
         this.participantes = participantes;
         this.sorteio = sorteio;
+        this.totalDeParticipantes = participantes.size();
     }
 	
 	public void sortear() throws SorteioException {
-		int indiceAtual = 0;
-	    int totalDeParticipantes = participantes.size();
-	    
-	    if (totalDeParticipantes < 2) {
-	    	throw new SorteioException("O Numero de participantes nao pode ser menor que dois.");
-	    }
-
+		verificaTamanhoDaListaDeParticipantes();
+		embaralhaParticipante();
+				
+	    int indiceAtual = 0;
 	    while(indiceAtual < totalDeParticipantes) {
-	    	if(indiceAtual == totalDeParticipantes - 1) {
-	            Par par = new Par(participantes.get(indiceAtual), participantes.get(0), sorteio);
-	            sorteio.adicionaPar(par);
+	    	if(participanteAtualEhOUltimoDaLista(indiceAtual)) {
+	            criaEAdicionaOParNoSorteio(sorteio, indiceAtual, 0);
 	            break;
 	        }
 
-	        Par par = new Par(participantes.get(indiceAtual), participantes.get(indiceAtual + 1), sorteio);
-	        sorteio.adicionaPar(par);
-
-	        indiceAtual++;
+	        criaEAdicionaOParNoSorteio(sorteio, indiceAtual, ++indiceAtual);
 	    }
     }
+
+	private void embaralhaParticipante() {
+		Collections.shuffle(participantes);
+	}
+
+	private void verificaTamanhoDaListaDeParticipantes() throws SorteioException {
+		if (totalDeParticipantes < 2) {
+	    	throw new SorteioException("O Numero de participantes nao pode ser menor que dois.");
+	    }
+	}
+
+	private boolean participanteAtualEhOUltimoDaLista(int indiceAtual) {
+		return indiceAtual == totalDeParticipantes - 1;
+	}
+
+	private void criaEAdicionaOParNoSorteio(Sorteio sorteio, int indiceAtual, int indiceFinal) {
+		sorteio.adicionaPar(new Par(participantes.get(indiceAtual), participantes.get(indiceFinal), sorteio));
+	}
 }
