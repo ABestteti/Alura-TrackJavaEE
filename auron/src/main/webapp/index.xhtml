@@ -6,7 +6,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
-	<title>Insert title here</title>
+	<title>:::: Cadastro de Participante de Sorteio ::::</title>
 </h:head>
 <h:body>
     <p:messages />
@@ -21,7 +21,7 @@
 			<p:outputLabel value="Senha: " />
 			<p:password value="#{participanteBean.participante.senha}" />
 
-			<p:commandButton action="#{participanteBean.cadastrar}" ajax="false"
+			<p:commandButton action="#{participanteBean.cadastrar()}" ajax="false"
 				value="Cadastrar" />
 		</p:panelGrid>
 	</h:form>

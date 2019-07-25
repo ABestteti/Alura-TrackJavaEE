@@ -13,7 +13,7 @@
 		<p:panelGrid columns="2">
 			<p:outputLabel value="Nome: " />
 			<p:inputText value="#{sorteioBean.sorteio.nome}" />
-			<p:commandButton action="#{sorteioBean.sortear}" value="Cadastrar"
+			<p:commandButton action="#{sorteioBean.sortear()}" value="Cadastrar"
 				ajax="false" />
 		</p:panelGrid>
 	</h:form>
