@@ -3,6 +3,8 @@ package br.com.caelum.auron.beans;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,14 +19,13 @@ import br.com.caelum.auron.modelo.SorteioException;
 @Named
 @RequestScoped
 public class SorteioBean {
-	private Sorteio sorteio = new Sorteio();
 
 	@Inject
     private SorteioDao sorteioDao;
-    @Inject
-    private ParticipanteDao participanteDao;
-    
-	public Sorteio getSorteio() {
+
+	private Sorteio sorteio = new Sorteio();
+
+    public Sorteio getSorteio() {
 		return sorteio;
 	}
 	
@@ -36,8 +37,7 @@ public class SorteioBean {
 			sorteador.sortear();
 			sorteioDao.inserir(sorteio);
 		} catch (SorteioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage()));
 		}
 		
 		System.out.println("Sorteio: " + sorteio.getNome());
